@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      width: 250px;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      padding: 10px;
+      width: 100px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Login</h2>
+
+  
+<form id="loginForm">
+
+  <label>Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+  <span id="emailError" style="color:red;"></span><br><br>
+
+  <label>Password:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <span id="passwordError" style="color:red;"></span><br><br>
+
+  <button type="button" id="loginBtn" onclick="validateLogin()">Login</button>
+
+</form>
+
+<p id="successMsg" style="color:green;"></p>
+
+
+  <!-- JavaScript added inside body -->
+  <script>
+function validateLogin() {
+
+  document.getElementById("emailError").innerText = "";
+  document.getElementById("passwordError").innerText = "";
+  document.getElementById("successMsg").innerText = "";
+
+  var email = document.getElementById("email").value.trim();
+  var password = document.getElementById("password").value;
+
+  // 1) Email required
+  if (email === "") {
+    document.getElementById("emailError").innerText = "Email is required";
+    return;
+  }
+
+  // 2) Email format check (simple)
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    document.getElementById("emailError").innerText = "Enter a valid email address";
+    return;
+  }
+
+  // 3) Password required
+  if (password === "") {
+    document.getElementById("passwordError").innerText = "Password is required";
+    return;
+  }
+
+  document.getElementById("successMsg").innerText = "Login successful";
+}
+</script>
+
+
+
+</body>
+</html>
